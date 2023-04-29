@@ -34,11 +34,9 @@ export class UsersService {
     return await createdUser.save();
   }
   async createAll(createUserDto: CreateUserDto[]) {
-    await Promise.all(
-      createUserDto.map(async (user) => {
-        await this.create(user);
-      }),
-    );
+    // search for existing user
+    const createdUser = await this.UserModel.insertMany(createUserDto);
+    return createdUser;
   }
 
   async findAll() {

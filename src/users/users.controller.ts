@@ -113,7 +113,7 @@ export class UsersController {
             bearthday,
           } as CreateUserDto;
           users.push(user);
-          await this.usersService.create(user);
+          // await this.usersService.create(user);
         }
       } catch (error) {
         console.log(
@@ -122,9 +122,7 @@ export class UsersController {
         );
       }
     }
-    //delete file
+    const created = await this.usersService.createAll(users);
     return { name: 'JO upload', status: 'success' };
-
-    // const created = await this.usersService.createAll(users);
   }
 }

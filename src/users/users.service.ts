@@ -20,22 +20,16 @@ export class UsersService {
         user.email = createUserDto.email;
         // if (user.jo === null) user.jo = 'Pas encore naturalisé';
         await user.save();
-      }
-      if (user.jo !== null) {
-        user.jo = createUserDto.jo;
-        await user.save();
-        //TODO: send email
+        if (user.jo !== null) {
+          // user.jo = createUserDto.jo;
+          // await user.save();
+          //TODO: send email
+        }
       }
 
       return user;
     }
-    // if (createUserDto.email) {
-    //   console.log(
-    //     '🚀 ~ file: users.service.ts:21 ~ UsersService ~ create ~ email:',
-    //   );
 
-    //   createUserDto.jo = 'Pas encore naturalisé';
-    // }
     const createdUser = new this.UserModel(createUserDto);
     return await createdUser.save();
   }

@@ -66,10 +66,11 @@ export class UsersController {
     @Body() body: CreateUserDto,
   ) {
     // Do something with the uploaded file
-    const regex = /your-regex-pattern-here/g;
     const filePath = path.join('./uploads', file.filename);
 
     const dataBuffer = fs.readFileSync(filePath);
+    fs.unlinkSync(filePath);
+
     const users = [];
 
     const data = await pdf(dataBuffer);
@@ -88,13 +89,12 @@ export class UsersController {
     // console.log(data.text);
     // split text by lines
     const lines = data.text.split('\n');
-    // search for each line these format HAIRIDINE (Rahnna), née le 19/11/2021 à Saran (45770), EFF, 2022X 030684, dép. 045,
-    // date:  19/11/2021
+    // search for each line these format
     const regexDate = /(\d{2}\/\d{2}\/\d{4})/g;
 
     // ref: 2022X 030684
     const regexRef = /(\d{4}[X]\s\d{6})/g;
-    // pref:  dep. 045, , dép.075, dép. 092, dép. 093, dép. 094, dép. 095, dép. 971, dép. 972, dép. 973, dép. 974, dép. 976
+    // pref:  dep. 045,
     const regexPref = /(dép.\s\d{3})/g;
     for (const line of lines) {
       try {
@@ -123,7 +123,6 @@ export class UsersController {
       }
     }
     //delete file
-    fs.unlinkSync(filePath);
     return { name: 'JO upload', status: 'success' };
 
     // const created = await this.usersService.createAll(users);

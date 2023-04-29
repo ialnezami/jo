@@ -40,10 +40,6 @@ export class UsersService {
     return await createdUser.save();
   }
   async createAll(createUserDto: CreateUserDto[]) {
-    console.log(
-      '🚀 ~ file: users.service.ts:39 ~ UsersService ~ createAll ~ createUserDto:',
-      createUserDto,
-    );
     await Promise.all(
       createUserDto.map(async (user) => {
         await this.create(user);

@@ -68,17 +68,9 @@ export class UsersController {
     // Do something with the uploaded file
     const regex = /your-regex-pattern-here/g;
     const filePath = path.join('./uploads', file.filename);
-    console.log(
-      '🚀 ~ file: users.controller.ts:68 ~ UsersController ~ uploadFile ~ filePath:',
-      filePath,
-    );
 
     const dataBuffer = fs.readFileSync(filePath);
     const users = [];
-    console.log(
-      '🚀 ~ file: users.controller.ts:118 ~ UsersController ~ users=lines.map ~ body.jo:',
-      body.jo,
-    );
 
     const data = await pdf(dataBuffer);
     // number of pages

@@ -19,6 +19,10 @@
       <div class="container mt-3">
         <div class="flex justify-content-center">
           <img src="./img.jpg" width="40%" />
+          <a href="./admin.html"  class="btn btn-primary" >
+            Téléverser le JO
+          </a>
+         
         </div>
         <div id="accordion">
           <div class="card">
@@ -36,14 +40,17 @@
                 <form>
                   <div class="mb-3 mt-3">
                     <label for="ref" class="form-label"
-                      >Numero minstriel:</label
+                      >Numero minstriel </label
                     >
+                    <small>
+                      2023Xespace000009
+                    </small>
                     <input
                       type="ref"
                       class="form-control"
                       id="ref"
-                      placeholder="Veuillez saisir votre numero"
-                      name="email"
+                      placeholder="2023X 000009"
+                      name="ref"
                     />
                   </div>
                   <button
@@ -76,11 +83,14 @@
                     <label for="ref" class="form-label"
                       >Numero minstriel:</label
                     >
+                    <small>
+                      2023Xespace000009
+                    </small>
                     <input
                       type="ref"
                       class="form-control"
                       id="refNew"
-                      placeholder="Veuillez saisir votre numero"
+                      placeholder="2023X 000009"
                       name="email"
                     />
                   </div>
@@ -107,55 +117,7 @@
               </div>
             </div>
           </div>
-          <div class="card">
-            <div class="card-header">
-              <a
-                class="collapsed btn"
-                data-bs-toggle="collapse"
-                href="#collapseThree"
-              >
-                Télécharger le JO
-              </a>
-            </div>
-            <div
-              id="collapseThree"
-              class="collapse"
-              data-bs-parent="#accordion"
-            >
-              <div class="card-body">
-                <form id="formupload">
-                  <div class="mb-3 mt-3">
-                    <label for="jo" class="form-label">JO date:</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="jo"
-                      placeholder="Veuillez saisir le numero de journal officiel"
-                      name="jo"
-                    />
-                  </div>
-                  <div class="mb-3 mt-3">
-                    <label for="file" class="form-label">JO:</label>
-                    <input
-                      type="file"
-                      class="form-control"
-                      id="file"
-                      name="file"
-                    />
-                  </div>
-                  <button
-                    id="saveJo"
-                    type="button"
-                    class="btn btn-primary"
-                    data-bs-toggle="modal"
-                    data-bs-target="#myModal"
-                  >
-                    Upload
-                  </button>
-                </form>
-              </div>
-            </div>
-          </div>
+        
         </div>
       </div>
       <footer class="footer mt-auto py-3 bg-light">
@@ -267,7 +229,16 @@
               const keys = Object.keys(data);
               console.log('🚀 ~ file: index.html:129 ~ keys:', keys);
               let elms = '';
-              for (let i = 0; i < keys.length; i++) {
+              const exceptedKeys = [
+              'bearthday',
+              'expiresAt',
+              'createdAt',
+              'updatedAt',
+              '_id',
+              '__v',
+            ];
+            for (let i = 0; i < keys.length; i++) {
+              if (exceptedKeys.includes(keys[i])) continue;
                 elms += keys[i] + ' : ' + data[keys[i]] + '<br/>';
               }
               elms +=
@@ -278,31 +249,7 @@
               console.error('Error:', error);
             });
         });
-        elmentSaveJo.addEventListener('click', (event) => {
-          elmentResponse.innerHTML =
-            'Téléchargement en cours... <div class="spinner-border"></div>';
-          event.preventDefault();
-          const form = document.querySelector('#formupload');
-          const formData = new FormData(form);
-
-          fetch('/users/upload', {
-            method: 'POST',
-            body: formData,
-          })
-            .then((response) => {
-              if (response.ok) {
-                // File was successfully uploaded
-                console.log('File uploaded!');
-                elmentResponse.innerHTML =
-                  'Fichier téléchargé avec succès, vous reverez un email de confirmation';
-              } else {
-                // Handle error
-                console.error('Upload error:', response.statusText);
-              }
-            })
-            .catch((error) => console.error('Fetch error:', error));
-        });
-      </script>
+     </script>
     </body>
   </html></lang
 >

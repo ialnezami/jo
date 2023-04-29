@@ -17,7 +17,7 @@ export class User {
   prefecture: string;
   @Prop({
     type: mongoose.SchemaTypes.Date,
-    default: new Date(Date.now() + 60 * 60 * 24 * 30 * 4 * 1000),
+    default: new Date(Date.now() + 60 * 60 * 24 * 30 * 12 * 1000),
     expires: 0,
   })
   expiresAt: Date;

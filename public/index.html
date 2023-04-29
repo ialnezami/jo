@@ -193,10 +193,10 @@
         elmentSearchBtn.addEventListener('click', async function () {
           elmentResponse.innerHTML =
             'Recherche en cours... <div class="spinner-border"></div>';
-          // http://localhost:3099/users/2023X100134
+          // /users/2023X100134
           const ref = document.getElementById('ref').value;
           try {
-            const response = await fetch('http://localhost:3099/users/' + ref, {
+            const response = await fetch('/users/' + ref, {
               mode: 'cors', // Add the 'mode' option with the value 'cors'
             });
             const data = await response.json();
@@ -236,10 +236,10 @@
         elmentSaveBtn.addEventListener('click', function () {
           elmentResponse.innerHTML =
             'Enregistrement en cours... <div class="spinner-border"></div>';
-          // post http://localhost:3099/users
+          // post /users
           const ref = document.getElementById('refNew').value;
           const email = document.getElementById('email').value;
-          fetch('http://localhost:3099/users', {
+          fetch('/users', {
             method: 'POST',
             mode: 'cors', // Add the 'mode' option with the value 'cors'
             headers: {
@@ -274,7 +274,7 @@
           const form = document.querySelector('#formupload');
           const formData = new FormData(form);
 
-          fetch('http://localhost:3099/users/upload', {
+          fetch('/users/upload', {
             method: 'POST',
             body: formData,
           })

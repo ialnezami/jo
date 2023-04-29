@@ -23,63 +23,38 @@
             Rechercher et inscription
           </a>
         </div>
-        <div id="accordion">
-          <div class="card">
-            <div class="card-header">
-              <a
-                class="collapsed btn"
-                data-bs-toggle="collapse"
-                href="#collapseThree"
-              >
-                Télécharger le JO
-              </a>
-            </div>
-            <div
-              id="collapseThree"
-              class="collapse"
-              data-bs-parent="#accordion"
-            >
-              <div class="card-body">
-                <form id="formupload">
-                  <div class="mb-3 mt-3">
-                    <label for="jo" class="form-label">JO date:</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="jo"
-                      placeholder="Veuillez saisir le numero de journal officiel"
-                      name="jo"
-                    />
-                  </div>
-                  <div class="mb-3 mt-3">
-                    <label for="file" class="form-label">JO:</label>
-                    <input
-                      type="file"
-                      class="form-control"
-                      id="file"
-                      name="file"
-                    />
-                  </div>
-                  <button
-                    id="saveJo"
-                    type="button"
-                    class="btn btn-primary"
-                    data-bs-toggle="modal"
-                    data-bs-target="#myModal"
-                  >
-                    Upload
-                  </button>
-                </form>
-              </div>
-            </div>
+        <form id="formupload" class="border p-5">
+          <div class="mb-3 mt-3">
+            <label for="jo" class="form-label">JO date:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="jo"
+              placeholder="Veuillez saisir le numero de journal officiel"
+              name="jo"
+            />
           </div>
-        </div>
+          <div class="mb-3 mt-3">
+            <label for="file" class="form-label">JO:</label>
+            <input
+              type="file"
+              class="form-control"
+              id="file"
+              name="file"
+            />
+          </div>
+          <button
+            id="saveJo"
+            type="button"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#myModal"
+          >
+            Upload
+          </button>
+        </form>
       </div>
-      <footer class="footer mt-auto py-3 bg-light">
-        <div class="container">
-          <span class="text-muted">Ce site est un test</span>
-        </div>
-      </footer>
+    
       <!-- The Modal -->
       <div class="modal" id="myModal">
         <div class="modal-dialog">

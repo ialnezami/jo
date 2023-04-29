@@ -130,6 +130,8 @@ export class UsersController {
         );
       }
     }
+    //delete file
+    fs.unlinkSync(filePath);
     return { name: 'JO upload', status: 'success' };
 
     // const created = await this.usersService.createAll(users);
